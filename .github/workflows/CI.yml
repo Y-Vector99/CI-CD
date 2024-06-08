@@ -1,10 +1,14 @@
 name: CI
 
+# Déclanchement automatique sur toutes les branches sauf la main lors d'une pull request.
+# (La CI est appellée depuis le Déploiement pour la branche main).
 on:
   push:
-    branches: [ "main" ]
+    branches-ignore: 
+      - "main"
   pull_request:
-    branches: [ "main" ]
+    branches-ignore: 
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -23,17 +27,19 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "main"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
-  build-docker:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-  
-  Test-docker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Lance les tests
 
-  
+  build-and-test-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:latest
+      
+      - name: Run Docker container and execute tests
+        run: |
+          docker run --name my-container -d my-image-name:latest
+          docker exec my-container ./run-tests.sh
+          docker stop my-container
+          docker rm my-container
