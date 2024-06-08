@@ -9,7 +9,7 @@ Intégration continue (toutes les branches) :
 - Un lint du code est effectué sur les changements apportés cela inclut le Dockerfile.
 - L'image docker est build et lancée.
 - Un test est effectuée depuis un contneur.
-- Si le lint le build ou le test ne sont pas passés la pull request est refusée.
+- Si build ou le test ne sont pas passés la pull request est refusée.
 
 Déploiement continue (main uniquement) :
 - Lorsqu'une pull-request est initiée sur la branche main on lance automatiquement le processus de déploiement.
