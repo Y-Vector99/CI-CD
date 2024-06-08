@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout du code
+        uses: actions/checkout@v4
       
       - name: Déploiement
-      - uses: ./.github/workflows/Déploiement.yml
+        run: |
+          # Commandes de déploiement à exécuter ici
 
       - name: Génération des notes de release
         id: create_release
