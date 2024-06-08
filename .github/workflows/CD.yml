@@ -10,3 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Déploiement
+      - uses: ./.github/workflows/déploiement.yml
+
+      - name: Livraison      
