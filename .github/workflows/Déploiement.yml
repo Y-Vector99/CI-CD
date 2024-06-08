@@ -16,10 +16,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: CI
-        uses: peter-evans/workflow-dispatch@v1
+        uses: actions/github-script@v4
         with:
-          workflow: ./.github/workflows/CI.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const response = await octokit.request('POST /repos/{owner}/{repo}/dispatches', {
+              owner: 'owner_name',
+              repo: 'repo_name',
+              event_type: 'trigger-ci'
+            });
 
   Deploiement:
     runs-on: ubuntu-latest
