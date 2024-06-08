@@ -18,6 +18,18 @@ jobs:
         run: |
           # Commandes de déploiement à exécuter ici
 
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      
+      - name: Authenticate with GitHub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+      
+
       - name: Génération des notes de release
         id: create_release
         uses: actions/create-release@v1
