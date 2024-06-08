@@ -7,5 +7,5 @@ RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE EXPOSE $PORT
+EXPOSE $PORT
 CMD ["java", "-jar", "app.jar"]
