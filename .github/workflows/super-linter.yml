@@ -6,12 +6,9 @@
 # https://github.com/github/super-linter
 name: Lint Code Base
 
+#On appel le workflow depuis le CI
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+  workflow_call:
   
 jobs:
   run-lint:
