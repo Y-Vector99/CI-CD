@@ -33,21 +33,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'  # Vous pouvez choisir une autre distribution si nécessaire
-
-      - name: Build with Maven
-        run: mvn clean package
-
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag my-image-name:latest
-      
+
       - name: Run Docker container and execute tests
         run: |
           docker run --name my-container -d my-image-name:latest
-          docker exec my-container ./run-tests.sh
+          docker exec my-container mvn test
           docker stop my-container
           docker rm my-container
