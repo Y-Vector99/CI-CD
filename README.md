@@ -20,3 +20,12 @@ Livraison continue :
 - Lorsqu'une release est crée avec un tag.
 - On repasse par le processus de Déploiement (incluant le processus d'intégration continue) avant de continuer.
 - Si le processus de déploiement réussi on met à disposition la branche main dans une release.
+
+
+# Commandes docker :
+
+Build le dockerfile :
+docker build -t app .
+
+run un conteneur en read only (On spécifie le port aprés les tags -e et p soit -e "<port> -p<port>:<port>" respectivement) :
+docker run --read-only --name my-container -d -e PORT=8080 -p 8080:8080 app
