@@ -2,6 +2,7 @@
 
 Pull request uniquement :
 - Pour commit sur une branche il faut obligatoirement passer par une pull request.
+- Pour qu'une pull request soit acceptée au moins une personne doit aprouver son implémentation.
 
 Intégration continue (toutes les branches) :
 - Lorsqu'une pull-request est initiée on lance automatiquement le processus de CI.
