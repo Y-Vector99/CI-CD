@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Integration-continue:
+  CI:
     runs-on: ubuntu-latest
     
     steps:
