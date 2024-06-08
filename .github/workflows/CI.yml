@@ -1,13 +1,11 @@
 name: CI
 
-# Déclenchement automatique sur toutes les branches sauf la main lors d'une pull request.
-# (La CI est appelée depuis le Déploiement pour la branche main).
 on:
   push:
-    branches-ignore: 
+    branches-ignore:
       - "main"
   pull_request:
-    branches-ignore: 
+    branches-ignore:
       - "main"
   workflow_dispatch:
 
@@ -18,7 +16,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
       - name: Lint Code Base
         uses: github/super-linter@v4
@@ -32,9 +29,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Build the Docker image
         run: docker build -t app .
+        # Vérification si la construction a réussi
+        if: ${{ success() }}
 
       - name: Run Docker container and execute tests
         run: |
@@ -42,3 +41,8 @@ jobs:
           docker run --rm -v $(pwd):/app -w /app maven:3.8.1-openjdk-17 mvn test
           docker stop my-container
           docker rm my-container
+        # Vérification si les tests ont réussi
+        if: ${{ success() }}
+
+      - name: Check if build or test failed
+        run: exit 1 # Forcing job to fail if previous steps were not successful
