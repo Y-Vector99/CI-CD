@@ -8,6 +8,9 @@ on:
     branches-ignore:
       - "main"
   workflow_dispatch:
+    inputs:
+      trigger-from-workflow:
+        description: "Trigger CI workflow from another workflow"
 
 jobs:
   run-lint:
