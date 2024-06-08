@@ -13,10 +13,10 @@ jobs:
     
     steps:
       - name: Récupère les fichiers
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       - name: CI
-      - uses: ./.github/workflows/CI.yml
+        uses: ./.github/workflows/CI.yml
 
   Deploiement:
     runs-on: ubuntu-latest
