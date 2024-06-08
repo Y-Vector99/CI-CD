@@ -16,7 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: CI
-        uses: ./.github/workflows/CI.yml
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          workflow: AnotherWorkflow.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   Deploiement:
     runs-on: ubuntu-latest
