@@ -15,8 +15,8 @@ jobs:
       - name: Récupère les fichiers
       - uses: actions/checkout@v4
 
-      - name: Déclenche le CI
-      - uses: ./.github/workflows/docker-build.yml
+      - name: CI
+      - uses: ./.github/workflows/CI.yml
 
   Deploiement:
     runs-on: ubuntu-latest
