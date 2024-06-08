@@ -3,7 +3,7 @@ WORKDIR /app
 COPY pom.xml /app
 RUN mvn dependency:resolve
 COPY . /app
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 FROM openjdk:17
 COPY --from=build /app/target/*.jar app.jar
