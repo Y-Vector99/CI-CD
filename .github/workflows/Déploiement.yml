@@ -18,7 +18,7 @@ jobs:
       - name: CI
         uses: peter-evans/workflow-dispatch@v1
         with:
-          workflow: AnotherWorkflow.yml
+          workflow: ./.github/workflows/CI.yml
           token: ${{ secrets.GITHUB_TOKEN }}
 
   Deploiement:
