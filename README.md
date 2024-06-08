@@ -12,7 +12,7 @@ Intégration continue (toutes les branches) :
 - Si le lint le build ou le test ne sont pas passés la pull request est refusée.
 
 Déploiement continue (main uniquement) :
-- Lorsqu'une pull-request est initiée sur la branche main on lance automatiquement le processus de CD.
+- Lorsqu'une pull-request est initiée sur la branche main on lance automatiquement le processus de déploiement.
 - On repasse par le processus d'intégration continue avant de continuer.
 - Si le processus d'intégration continue réussi on récupère et déploie l'image sur dockerhub.
 
