@@ -1,4 +1,4 @@
-name: Intégration continue
+name: CI
 
 on:
   push:
