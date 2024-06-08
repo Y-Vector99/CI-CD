@@ -5,7 +5,7 @@ Pull request uniquement :
 - Pour qu'une pull request soit acceptée au moins une personne doit aprouver son implémentation.
 
 Intégration continue (toutes les branches) :
-- Lorsqu'une pull-request est initiée on lance automatiquement le processus de CI.
+- Lorsqu'une pull-request est initiée sur une branche autre que la branche main on lance automatiquement le processus de CI.
 - Un lint du code est effectué sur les changements apportés cela inclut le Dockerfile.
 - L'image docker est build et lancée.
 - Un test est effectuée depuis un contneur.
