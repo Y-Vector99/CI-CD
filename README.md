@@ -19,4 +19,4 @@ Déploiement continue (main uniquement) :
 Livraison continue :
 - Lorsqu'une release est crée avec un tag.
 - On repasse par le processus de Déploiement (incluant le processus d'intégration continue) avant de continuer.
-- Si le processus de déploiement réussi on met à disposition le projet dans une release.
+- Si le processus de déploiement réussi on met à disposition la branche main dans une release.
