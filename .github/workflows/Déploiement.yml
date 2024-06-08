@@ -41,7 +41,7 @@ jobs:
       - name: Run Docker container and execute tests
         id: tests
         run: |
-          docker run -d -p 8080:8080 --name my-container app
+          docker run --name my-container -d -e PORT=8080 -p 8080:8080 app
           docker run --rm -v $(pwd):/app -w /app maven:3.8.1-openjdk-17 mvn test
           docker stop my-container
           docker rm my-container
