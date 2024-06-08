@@ -12,6 +12,25 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Déploiement
-      - uses: ./.github/workflows/déploiement.yml
+      - uses: ./.github/workflows/Déploiement.yml
 
-      - name: Livraison      
+      - name: Livraison
+      - run: |
+              echo "Livraison de la version ${{ github.ref_name }}"
+              # Remplacez cette ligne par les commandes nécessaires pour déployer votre application
+              # Exemple : ./deploy.sh ${{ github.ref_name }}
+
+      - name: Génération des notes de release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            Notes de la release pour la version ${{ github.ref_name }}.
+            - Liste des modifications
+            - Nouveautés
+          draft: false
+          prerelease: false
